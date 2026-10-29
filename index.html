@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#6d28d9">
+  <title>Exchange Bazaar — Kampüsün paylaşım pazarı</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="demo-banner"><span class="pulse"></span> DEMO MODU · Gerçek giriş, doğrulama veya kredi işlemi yapılmaz</div>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Exchange Bazaar ana sayfa">
+      <span class="brand-mark">EB</span>
+      <span>exchange<span class="brand-accent">bazaar</span><small>İSTANBUL ÜNİVERSİTESİ · PİLOT</small></span>
+    </a>
+    <div class="top-actions">
+      <button class="icon-button" id="walletJump" title="Cüzdanı göster" aria-label="Cüzdanı göster">◈</button>
+      <button class="avatar" id="openAuth" title="Giriş yap">?</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="eyebrow-dot"></span> KAMPÜS İÇİNDE DÖNGÜSEL PAYLAŞIM</div>
+        <h1>İhtiyacın olanı bul.<br><span>İşine yarayanı paylaş.</span></h1>
+        <p>Kullanmadığın eşyalar başka bir öğrencinin işine yarasın. Al, sat veya kirala — kampüs içinde, krediyle.</p>
+        <div class="hero-actions">
+          <a class="button button-dark" href="#market">Ürünleri keşfet <span>↗</span></a>
+          <button class="button button-light" id="heroList">＋ İlan ver</button>
+        </div>
+        <div class="hero-note"><span class="mini-avatars"><i>📚</i><i>🎧</i><i>🪴</i></span><span>Kampüs topluluğu için tasarlandı</span></div>
+      </div>
+      <div class="hero-art" aria-label="Paylaşım temalı dekoratif illüstrasyon">
+        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+        <div class="floating-card book-card"><span class="float-icon">📚</span><b>Ders kitapları</b><small>Yeni bir sahibini bekliyor</small></div>
+        <div class="floating-card headphone-card"><span class="float-icon">🎧</span><b>Teknoloji</b><small>Paylaş, yeniden kullan</small></div>
+        <div class="hero-circle"><span class="circle-spark">✦</span><span class="circle-emoji">♻️</span><span class="circle-caption">DAHA AZ ATIK<br>DAHA ÇOK PAYLAŞIM</span></div>
+        <div class="tiny-sticker sticker-one">senin için<br>bir fırsat ✨</div>
+        <div class="tiny-sticker sticker-two">KAMPÜSTE<br>PAYLAŞ 💜</div>
+      </div>
+    </section>
+
+    <section class="stats-row" aria-label="Demo istatistikleri">
+      <div class="stat"><span class="stat-icon purple">✦</span><div><b id="listingCount">8</b><small>örnek ilan</small></div></div>
+      <div class="stat"><span class="stat-icon orange">↻</span><div><b>Satış + kiralama</b><small>iki esnek seçenek</small></div></div>
+      <div class="stat"><span class="stat-icon green">⌂</span><div><b>Kampüs odaklı</b><small>İstanbul Üniversitesi pilotu</small></div></div>
+      <div class="wallet-card" id="walletCard"><div class="wallet-label">DEMO CÜZDANIN <span>◈</span></div><div class="wallet-amount"><strong id="walletBalance">100</strong><span>kredi</span></div><div class="wallet-foot">Başlangıç bakiyesi · gerçek değer taşımaz</div><div class="wallet-decoration">✳</div></div>
+    </section>
+
+    <section class="market-section" id="market">
+      <div class="section-heading">
+        <div><div class="eyebrow muted">KAMPÜSTEN SEÇİLENLER</div><h2>Bir göz at, <span>bir şey keşfet.</span></h2></div>
+        <button class="text-button" id="allListings">Tüm ilanlar <span>→</span></button>
+      </div>
+      <div class="market-tools">
+        <label class="search-box"><span>⌕</span><input id="searchInput" type="search" placeholder="Ne arıyorsun? Kitap, kulaklık, bisiklet..." aria-label="Ürün ara"><kbd>⌘ K</kbd></label>
+        <div class="category-list" id="categoryList" aria-label="Kategori filtreleri">
+          <button class="category active" data-category="Tümü">✦ Tümü</button>
+          <button class="category" data-category="Kitaplar">📚 Kitaplar</button>
+          <button class="category" data-category="Teknoloji">🎧 Teknoloji</button>
+          <button class="category" data-category="Yaşam">🪴 Yaşam</button>
+          <button class="category" data-category="Spor">⚽ Spor</button>
+          <button class="category" data-category="Diğer">✳ Diğer</button>
+        </div>
+      </div>
+      <div class="results-line"><span id="resultsLabel">Örnek ilanlar</span><span class="demo-label">TÜM VERİLER DEMO</span></div>
+      <div class="product-grid" id="productGrid"></div>
+      <div class="empty-state hidden" id="emptyState"><span>🔎</span><h3>Burada henüz bir şey yok</h3><p>Aramanı veya kategori seçimini değiştirmeyi dene.</p><button class="button button-light" id="resetFilters">Filtreleri temizle</button></div>
+    </section>
+
+    <section class="community-banner">
+      <div class="community-icon">✳</div><div><div class="eyebrow">PAYLAŞIMIN GÜCÜ</div><h2>Bir eşya, ikinci bir hikâye.</h2><p>İhtiyacın kadarını al, kullanmadığını paylaş. Daha sürdürülebilir bir kampüs birlikte mümkün.</p></div><button class="button button-dark" id="communityList">İlk ilanını oluştur <span>↗</span></button>
+    </section>
+  </main>
+
+  <footer><a class="brand footer-brand" href="#"><span class="brand-mark">EB</span><span>exchange<span class="brand-accent">bazaar</span><small>PAYLAŞIM KAMPÜSTE BAŞLAR</small></span></a><span>Bir öğrenci projesi · Demo sürüm</span><a href="#market">Ürünlere dön ↑</a></footer>
+
+  <!-- Auth modal: intentionally demo-only; it does not create real accounts. -->
+  <div class="modal-backdrop hidden" id="authModal" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+    <div class="modal auth-modal">
+      <button class="modal-close" data-close="authModal" aria-label="Kapat">×</button>
+      <div class="modal-symbol">EB</div><div class="eyebrow muted">KAMPÜSÜNE KATIL</div><h2 id="authTitle">Tekrar merhaba!</h2><p class="modal-subtitle">Bu ekran şimdilik tasarım demosudur. Henüz hesap oluşturmaz veya e-posta doğrulamaz.</p>
+      <div class="auth-tabs"><button class="auth-tab active" data-auth-tab="login">Giriş yap</button><button class="auth-tab" data-auth-tab="register">Kayıt ol</button></div>
+      <form id="authForm">
+        <label class="field-label">Üniversite e-postası<input type="email" id="authEmail" placeholder="ogrenci@universite.edu.tr" required></label>
+        <label class="field-label">Şifre<input type="password" id="authPassword" placeholder="En az 8 karakter" minlength="8" required></label>
+        <div class="auth-hint">Demo aşamasında hiçbir şifre kaydedilmez veya gönderilmez.</div>
+        <button class="button button-primary full-width" type="submit" id="authSubmit">Giriş ekranını dene <span>→</span></button>
+      </form>
+      <div class="auth-notice" id="authNotice" role="status">Gerçek kayıt için sonraki aşamada Supabase Auth ve üniversite alan adı kontrolü eklenecek.</div>
+    </div>
+  </div>
+
+  <div class="modal-backdrop hidden" id="listingModal" role="dialog" aria-modal="true" aria-labelledby="listingTitle">
+    <div class="modal listing-modal">
+      <button class="modal-close" data-close="listingModal" aria-label="Kapat">×</button>
+      <div class="eyebrow muted">KAMPÜS PAZARINA KATIL</div><h2 id="listingTitle">Bir ilan oluştur ✨</h2>
+      <p class="modal-subtitle">Bu form yalnızca tarayıcıdaki demo listesini günceller; ilan sunucuya gönderilmez.</p>
+      <form id="listingForm">
+        <label class="field-label">Ürün adı<input id="newTitle" required maxlength="70" placeholder="Örn. İstatistik ders kitabı"></label>
+        <div class="form-row">
+          <label class="field-label">Kategori<select id="newCategory"><option>Kitaplar</option><option>Teknoloji</option><option>Yaşam</option><option>Spor</option><option>Diğer</option></select></label>
+          <label class="field-label">İşlem türü<select id="newType"><option value="Satılık">Satılık</option><option value="Kiralık">Kiralık</option></select></label>
+        </div>
+        <label class="field-label">Kredi bedeli<input id="newPrice" type="number" min="1" max="10000" required placeholder="Örn. 25"></label>
+        <label class="field-label">Kısa açıklama<textarea id="newDescription" rows="3" maxlength="240" placeholder="Ürün durumu, teslim bilgisi..."></textarea></label>
+        <button class="button button-primary full-width" type="submit">Demo ilanını ekle <span>＋</span></button>
+      </form>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
